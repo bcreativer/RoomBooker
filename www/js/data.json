@@ -1,0 +1,15 @@
+{
+  "bookings": [
+    {
+      "name": "Derrick",
+      "room": "A",
+      "day": "Monday",
+      "details": "Hip-Hop"
+    }, {
+      "name": "David",
+      "room": "B",
+      "day": "Tuesday",
+      "details": "Classical"
+    }
+  ]
+}

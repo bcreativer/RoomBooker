@@ -1,0 +1,10 @@
+<ion-content ng-controller="ListController" class="has-subheader">
+    <ion-list>
+      <ion-item ng-repeat="booking in bookings" class="item-thumbnail-left bar-subheader">
+        {{booking.name}}
+        {{booking.room}}
+        {{booking.day}}
+        {{booking.details}}
+      </ion-item>
+    </ion-list>
+</ion-content>
