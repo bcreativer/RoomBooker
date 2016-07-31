@@ -25,5 +25,14 @@ angular.module('starter', ['ionic'])
 .controller('ListController', ['$scope', '$http', function($scope, $http) {
   $http.get('js/data.json').success(function(data) {
     $scope.bookings = data.bookings;
+
+    $scope.onBookingDelete = function(booking) {
+      $scope.bookings.splice($scope.bookings.indexOf(booking), 1);
+    };
+
+    $scope.moveItem = function(booking, fromIndex, toIndex) {
+      $scope.bookings.splice(fromIndex, 1);
+      $scope.bookings.splice(toIndex, 0, booking);
+    };
   });
 }]);
