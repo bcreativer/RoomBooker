@@ -1,15 +1,20 @@
 {
-  "bookings": [
+  "bookings":[
     {
       "name": "Derrick",
-      "room": "A",
-      "day": "Monday",
-      "details": "Hip-Hop"
+      "room": "1",
+      "dayTime": "Monday 1pm",
+      "style": "Hip-Hop"
     }, {
-      "name": "David",
-      "room": "B",
-      "day": "Tuesday",
-      "details": "Classical"
+      "name": "Paul",
+      "room": "2",
+      "dayTime": "Tuesday 5pm",
+      "style": "Classical"
+    }, {
+      "name": "Jenny",
+      "room": "3",
+      "dayTime": "Saturday 8pm",
+      "style": "Kpop"
     }
   ]
 }

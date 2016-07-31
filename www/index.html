@@ -32,18 +32,19 @@
       <div class="bar bar-subheader item-input-inset bar-light">
         <label for="" class="item-input-wrapper">
           <i class="icon ion-search placeholder-icon"></i>
-          <input type="search" placeholder="Search">
+          <input type="search" ng-model="query" placeholder="Search">
         </label>
       </div>
 
       // Content
       <ion-content ng-controller="ListController" class="has-subheader">
           <ion-list>
-            <ion-item ng-repeat="booking in bookings" class="item-thumbnail-left bar-subheader">
-              {{booking.name}}
-              {{booking.room}}
-              {{booking.day}}
-              {{booking.details}}
+            <ion-item ng-repeat="booking in bookings | filter: query"
+            class="item-thumbnail-left bar-subheader">
+              <p>Name: {{booking.name}}</p>
+              <p>Room No: {{booking.room}}</p>
+              <p>Day and Time: {{booking.dayTime}}</p>
+              <p>Style: {{booking.style}}</p>
             </ion-item>
           </ion-list>
       </ion-content>
@@ -51,7 +52,7 @@
       <div class="tabs-striped tabs-clear tabs-background-calm">
         <div class="tabs tabs-icon-top">
           <a href="" class="tab-item"><i class="icon ion-home"></i>Home</a>
-          <a href="" class="tab-item"><i class="icon ion-person"></i>About</a>
+          <a href="" class="tab-item"><i class="icon ion-ios-book"></i>Bookings</a>
           <a href="" class="tab-item"><i class="icon ion-calendar"></i>Calendar</a>
         </div>
       </div>
