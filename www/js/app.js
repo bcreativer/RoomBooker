@@ -30,6 +30,17 @@ angular.module('starter', ['ionic'])
       $scope.bookings.splice($scope.bookings.indexOf(booking), 1);
     };
 
+    $scope.doRefresh = function() {
+      $http.get('js/data.json').success(function(data) {
+        $scope.bookings = data.bookings;
+        $scope.$broadcast('scroll.refreshComplete');
+      });
+    }
+
+    $scope.toggleStar = function(booking) {
+      booking.star = !booking.star;
+    }
+
     $scope.moveItem = function(booking, fromIndex, toIndex) {
       $scope.bookings.splice(fromIndex, 1);
       $scope.bookings.splice(toIndex, 0, booking);

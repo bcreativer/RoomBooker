@@ -42,13 +42,21 @@
 
       // Content
       <ion-content class="has-subheader">
+          <ion-refresher on-refresh="doRefresh()" pulling-text="Pull to refresh">
+          </ion-refresher>
           <ion-list show-delete="data.showDelete" show-reorder="data.showReorder">
-            <ion-item ng-repeat="booking in bookings | filter: query"
-            class="item-thumbnail-left bar-subheader item-text-wrap">
+            <ion-item ng-class="{'star': booking.star}" ng-repeat="booking in bookings | filter: query"
+            class="item-thumbnail-left item-icon-right bar-subheader item-text-wrap">
               <p>Name: {{booking.name}}</p>
               <p>Room No: {{booking.room}}</p>
               <p>Day and Time: {{booking.dayTime}}</p>
               <p>Style: {{booking.style}}</p>
+              <button class="button button-clear icon ion-star button-assertive
+              ng-click="toogleStar(booking)" ng-show="booking.star"">
+             </button>
+             <ion-option-button class="button-dark" ng-click="toggleStar(booking)">
+               <i class="icon ion-star"></i>
+             </ion-option-button>
               <ion-delete-button class="ion-minus-circled" ng-click="onBookingDelete(booking)"></ion-delete-button>
               <ion-reorder-button class="ion-navicon" on-reorder="moveItem(booking, $fromIndex, $toIndex)">
               </ion-reorder-button>
