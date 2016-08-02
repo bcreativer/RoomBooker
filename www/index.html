@@ -21,56 +21,7 @@
     <!-- your app's js -->
     <script src="js/app.js"></script>
   </head>
-  <body ng-app="starter">
-    <ion-pane ng-controller="ListController" >
-      // Header
-      <ion-header-bar class="bar-calm">
-        <button class="button button-icon ion-minus-circled" ng-click="data.showDelete = !data.showDelete; data.showReorder = false;">
-        </button>
-        <h1 class="title">RoomBooker</h1>
-        <button class="button button-icon ion-navicon" ng-click="data.showReorder = !data.showReorder; data.showDelete = false;">
-        </button>
-      </ion-header-bar>
-
-      // Search Bar
-      <div class="bar bar-subheader item-input-inset bar-light">
-        <label for="" class="item-input-wrapper">
-          <i class="icon ion-search placeholder-icon"></i>
-          <input type="search" ng-model="query" placeholder="Search">
-        </label>
-      </div>
-
-      // Content
-      <ion-content class="has-subheader">
-          <ion-refresher on-refresh="doRefresh()" pulling-text="Pull to refresh">
-          </ion-refresher>
-          <ion-list show-delete="data.showDelete" show-reorder="data.showReorder">
-            <ion-item ng-class="{'star': booking.star}" ng-repeat="booking in bookings | filter: query"
-            class="item-thumbnail-left item-icon-right bar-subheader item-text-wrap">
-              <p>Name: {{booking.name}}</p>
-              <p>Room No: {{booking.room}}</p>
-              <p>Day and Time: {{booking.dayTime}}</p>
-              <p>Style: {{booking.style}}</p>
-              <button class="button button-clear icon ion-star button-assertive
-              ng-click="toogleStar(booking)" ng-show="booking.star"">
-             </button>
-             <ion-option-button class="button-dark" ng-click="toggleStar(booking)">
-               <i class="icon ion-star"></i>
-             </ion-option-button>
-              <ion-delete-button class="ion-minus-circled" ng-click="onBookingDelete(booking)"></ion-delete-button>
-              <ion-reorder-button class="ion-navicon" on-reorder="moveItem(booking, $fromIndex, $toIndex)">
-              </ion-reorder-button>
-            </ion-item>
-          </ion-list>
-      </ion-content>
-
-      <div class="tabs-striped tabs-clear tabs-background-calm">
-        <div class="tabs tabs-icon-top">
-          <a href="" class="tab-item"><i class="icon ion-home"></i>Home</a>
-          <a href="" class="tab-item"><i class="icon ion-ios-book"></i>Bookings</a>
-          <a href="" class="tab-item"><i class="icon ion-calendar"></i>Calendar</a>
-        </div>
-      </div>
-    </ion-pane>
+  <body ng-app="starter" >
+      <ion-nav-view></ion-nav-view>
   </body>
 </html>

@@ -22,13 +22,72 @@ angular.module('starter', ['ionic'])
     }
   });
 })
+.config(function($stateProvider, $urlRouterProvider) {
+  $stateProvider
+    .state('tabs', {
+      url: '/tab',
+      abstract: true,
+      templateUrl: 'templates/tabs.html'
+    })
+    .state('tabs.booking', {
+      url: '/booking',
+      views: {
+        'booking-tab' : {
+          templateUrl: 'templates/booking.html',
+          controller: 'ListController'
+        }
+      }
+    })
+    .state('tabs.calendar', {
+      url: '/calendar',
+      views: {
+        'calendar-tab' : {
+          templateUrl: 'templates/calendar.html',
+          controller: 'CalendarController'
+        }
+      }
+    })
+    .state('tabs.home', {
+      url: '/home',
+      views: {
+        'home-tab' : {
+          templateUrl: 'templates/home.html'
+        }
+      }
+    })
+    $urlRouterProvider.otherwise('/tab/home');
+})
+
+
+
+.controller('CalendarController', ['$scope', '$http', function($scope, $http) {
+  $http.get('js/data.json').success(function(data) {
+    $scope.calendar = data.calendar;
+
+    $scope.onItemDelete = function(dayIndex, item) {
+      $scope.calendar[dayIndex].schedule.splice($scope.calendar[dayIndex]().schedule.indexOf(item), 1);
+    }
+
+    $scope.doRefresh = function() {
+      $http.get('js/data.json').success(function(data) {
+        $scope.calendar = data.calendar;
+        $scope.$broadcast('scroll.refreshComplete');
+      });
+    }
+
+    $scope.toggleStar = function(booking) {
+      booking.star = !booking.star;
+    }
+
+  });
+}])
 .controller('ListController', ['$scope', '$http', function($scope, $http) {
   $http.get('js/data.json').success(function(data) {
     $scope.bookings = data.bookings;
 
     $scope.onBookingDelete = function(booking) {
       $scope.bookings.splice($scope.bookings.indexOf(booking), 1);
-    };
+    }
 
     $scope.doRefresh = function() {
       $http.get('js/data.json').success(function(data) {
@@ -44,6 +103,6 @@ angular.module('starter', ['ionic'])
     $scope.moveItem = function(booking, fromIndex, toIndex) {
       $scope.bookings.splice(fromIndex, 1);
       $scope.bookings.splice(toIndex, 0, booking);
-    };
+    }
   });
 }]);

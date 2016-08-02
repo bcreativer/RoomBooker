@@ -3,3 +3,18 @@
 .star > .item-content {
   background-color: #EEE8D6 !important;
 }
+
+.splash {
+  background: url(../img/dance.jpeg) no-repeat center center fixed;
+  background-size: cover;
+}
+
+.branding {
+  margin: 0 auto;
+  margin-top: 150px;
+  text-align: center;
+}
+
+.branding p {
+  font-style: italic;
+}
