@@ -1,7 +1,9 @@
 /* Empty. Add your own CSS if you like */
-
+body {
+  cursor: url('http://ionicframework.com/img/finger.png')
+}
 .star > .item-content {
-  background-color: #EEE8D6 !important;
+  background-color: #11c1f3 !important;
 }
 
 .splash {
@@ -17,4 +19,20 @@
 
 .branding p {
   font-style: italic;
+  font-size: 1.5em;
+}
+
+.item-divider {
+  background-color: #11c1f3;
+}
+
+.dayhighlight {
+  background-color: #9ec6de;
+  border-top: 20px solid #417d9a;
+}
+
+.dayhighlight h2 {
+  color: #417d9a;
+  font-size: 2rem;
+  font-weight: 200;
 }

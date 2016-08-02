@@ -58,14 +58,12 @@ angular.module('starter', ['ionic'])
     $urlRouterProvider.otherwise('/tab/home');
 })
 
-
-
 .controller('CalendarController', ['$scope', '$http', function($scope, $http) {
   $http.get('js/data.json').success(function(data) {
     $scope.calendar = data.calendar;
 
     $scope.onItemDelete = function(dayIndex, item) {
-      $scope.calendar[dayIndex].schedule.splice($scope.calendar[dayIndex]().schedule.indexOf(item), 1);
+      $scope.calendar[dayIndex].schedule.splice($scope.calendar[dayIndex].schedule.indexOf(item), 1);
     }
 
     $scope.doRefresh = function() {
@@ -81,6 +79,7 @@ angular.module('starter', ['ionic'])
 
   });
 }])
+
 .controller('ListController', ['$scope', '$http', function($scope, $http) {
   $http.get('js/data.json').success(function(data) {
     $scope.bookings = data.bookings;
