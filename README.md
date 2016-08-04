@@ -9,7 +9,7 @@ You need Ionic installed on your local machine to run this app, so please instal
 $ npm install -g ionic
 ```
 
-Then run: 
+Once you have cloned this project and installed Ionic, go into the root folder and run the following command:
 
 ```bash
 $ ionic serve
