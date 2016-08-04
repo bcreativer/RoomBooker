@@ -9,19 +9,24 @@
 
 // Search Bar
 <div class="bar bar-subheader item-input-inset bar-light">
+  <button class="button button-medium create">Create New</button>
   <label for="" class="item-input-wrapper">
     <i class="icon ion-search placeholder-icon"></i>
     <input type="search" ng-model="query" placeholder="Search">
   </label>
 </div>
 
+
+
 // Content
 <ion-content class="has-subheader">
     <ion-refresher on-refresh="doRefresh()" pulling-text="Pull to refresh">
     </ion-refresher>
+
     <ion-list show-delete="data.showDelete" show-reorder="data.showReorder">
       <ion-item ng-class="{'star': booking.star}" ng-repeat="booking in bookings | filter: query"
       class="item-thumbnail-left item-icon-right bar-subheader item-text-wrap">
+        <img ng-src="img/{{booking.name}}.jpg" alt="{{booking.item}}">
         <p>Name: {{booking.name}}</p>
         <p>Room No: {{booking.room}}</p>
         <p>Day and Time: {{booking.dayTime}}</p>
@@ -36,7 +41,9 @@
         <ion-reorder-button class="ion-navicon" on-reorder="moveItem(booking, $fromIndex, $toIndex)">
         </ion-reorder-button>
       </ion-item>
+
     </ion-list>
+
 </ion-content>
 
 <div class="tabs-striped tabs-clear tabs-background-calm">

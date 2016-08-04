@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('starter', ['ionic'])
+angular.module('starter', ['ionic', 'starter.controller'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -57,51 +57,3 @@ angular.module('starter', ['ionic'])
     })
     $urlRouterProvider.otherwise('/tab/home');
 })
-
-.controller('CalendarController', ['$scope', '$http', function($scope, $http) {
-  $http.get('js/data.json').success(function(data) {
-    $scope.calendar = data.calendar;
-
-    $scope.onItemDelete = function(dayIndex, item) {
-      $scope.calendar[dayIndex].schedule.splice($scope.calendar[dayIndex].schedule.indexOf(item), 1);
-    }
-
-    $scope.doRefresh = function() {
-      $http.get('js/data.json').success(function(data) {
-        $scope.calendar = data.calendar;
-        $scope.$broadcast('scroll.refreshComplete');
-      });
-    }
-
-    $scope.toggleStar = function(booking) {
-      booking.star = !booking.star;
-    }
-
-  });
-}])
-
-.controller('ListController', ['$scope', '$http', function($scope, $http) {
-  $http.get('js/data.json').success(function(data) {
-    $scope.bookings = data.bookings;
-
-    $scope.onBookingDelete = function(booking) {
-      $scope.bookings.splice($scope.bookings.indexOf(booking), 1);
-    }
-
-    $scope.doRefresh = function() {
-      $http.get('js/data.json').success(function(data) {
-        $scope.bookings = data.bookings;
-        $scope.$broadcast('scroll.refreshComplete');
-      });
-    }
-
-    $scope.toggleStar = function(booking) {
-      booking.star = !booking.star;
-    }
-
-    $scope.moveItem = function(booking, fromIndex, toIndex) {
-      $scope.bookings.splice(fromIndex, 1);
-      $scope.bookings.splice(toIndex, 0, booking);
-    }
-  });
-}]);

@@ -73,13 +73,13 @@
   ],
   "bookings":[
     {
-      "name": "Derrick",
+      "name": "Sarah",
       "nickName": "G Dogg",
       "room": "1",
       "dayTime": "Monday 1pm",
       "style": "Hip-Hop"
     }, {
-      "name": "Paul",
+      "name": "Derrick",
       "nickName": "Cool Dude",
       "room": "2",
       "dayTime": "Tuesday 5pm",
