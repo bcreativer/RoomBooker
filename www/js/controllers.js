@@ -1,4 +1,4 @@
-angular.module('starter.controller', [])
+angular.module('starter.controller', ['ngCordova','ngCordovaOauth'])
 .controller('CalendarController', ['$scope', '$http', function($scope, $http) {
   $http.get('js/data.json').success(function(data) {
     $scope.calendar = data.calendar;
@@ -45,4 +45,15 @@ angular.module('starter.controller', [])
       $scope.bookings.splice(toIndex, 0, booking);
     }
   });
-}]);
+}])
+
+.controller('LoginwithFacebook', function($scope, $cordovaOauth) {
+  $scope.LoginwithFacebook = function() {
+    console.log("clicked");
+    $cordovaOauth.facebook("F1731780740410543", ["email"]).then(function(result) {
+      alert("Auth Success..!!" + result);
+    }, function(error) {
+      alert("Auth Failed..!!" + error);
+    });
+  };
+});
